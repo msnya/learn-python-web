@@ -1,0 +1,23 @@
+{% extends "base.html" %} <!-- Наследуем у базового шаблона -->
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            {% include("messages.html") %}
+            <h2>Новости</h2>
+            {% for news in news_list %}
+            <h3><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{news.title}}</a></h3>
+            <p> {{news.published.strftime('%d.%m.%Y')}} | Комментарии: {{ news.comments_count() }}</p>
+            <hr />
+            {% endfor %}
+        </div>
+        <div class="col-4">
+            <h2>Прогноз</h2>
+            {% if weather %} <!-- Так можно реализовать простую логику -->
+                Тем-ра в Москве: {{weather.temp_C}} С, Ощущается как: {{weather.FeelsLikeC}} С
+            {% else %}
+                Сервис погоды временно недоступен
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

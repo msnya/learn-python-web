@@ -1,0 +1,28 @@
+{% extends "base.html" %} <!-- Наследуем у базового шаблона -->
+
+{% block content %}
+    <div class="row">
+        <div class="col-4"> <!-- Эта хуйня отвечает за ширину колонки -->
+            {% include("messages.html") %}
+            <form action="{{ url_for('user.process_login') }}" method="POST"><!-- POST - метод передачи запроса -->
+                {{form.hidden_tag() }} <!-- hidden_tag - выводит скрытые поля формы -->
+                <div class="form-group"> <!-- Тег пораграф -->
+                    {{ form.username.label }} <!-- Отображение лейбла из forms.py/ br - перенос строки -->
+                    {{ form.username() }} <!-- Выводим само поле -->
+                </div>
+                <div class="form-group"> <!-- Тег пораграф -->
+                    {{ form.password.label }} <!-- Отображение лейбла из forms.py/ br - перенос строки -->
+                    {{ form.password() }} <!-- Выводим само поле -->
+                </div>
+                <div class="form-group form-check"> <!-- Тег пораграф -->
+                    {{ form.remember_me() }} <!-- Отображение лейбла из forms.py/ br - перенос строки -->
+                    {{ form.remember_me.label(class_='form-check-lebel') }} <!-- Выводим само поле -->
+                </div>
+
+                {{ form.submit() }} <!-- Выводим само поле -->
+            </form>
+        </div>
+        <div class="col-8">
+        </div>
+    </div>
+{% endblock %}

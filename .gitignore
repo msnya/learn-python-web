@@ -1,0 +1,7 @@
+passwords.txt
+*.log
+*/settings.py
+*/*/settings.py
+*venv*
+*env*
+config.py

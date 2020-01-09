@@ -1,0 +1,9 @@
+{% with messages = get_flashed_messages() %} <!-- Делаем сообщение для пользователя -->
+    {% if messages %} <!-- Если есть сообщение - выводим ДИВ -->
+    <div class="alert alert-warning" role="alert">
+        {% for message in messages %} <!-- Сообщения выводим в цикле, на случай если их больше одного -->
+            {{ message }}<br>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
